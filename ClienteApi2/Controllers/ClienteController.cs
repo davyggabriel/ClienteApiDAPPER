@@ -113,6 +113,6 @@ namespace ClienteApi2.Controllers
             RepositorioCliente.Executar(_connectionString, sql, parametros);         
         }
 
-        //teste
+        //teste do git
     }
 }
