@@ -112,7 +112,5 @@ namespace ClienteApi2.Controllers
             sql = "delete from endereco where Id = @idEndereco";
             RepositorioCliente.Executar(_connectionString, sql, parametros);         
         }
-
-        //teste do git
     }
 }
