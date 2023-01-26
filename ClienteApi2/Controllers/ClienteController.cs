@@ -23,9 +23,6 @@ namespace ClienteApi2.Controllers
         [HttpPost("cadastrar")]
         public ActionResult<Cliente> Cadastrar([FromBody] Cliente cliente)
         {
-            var usuario = new Cliente(cliente.Id, cliente.Nome, cliente.Cpf, cliente.Filiacao, cliente.Endereco, cliente.Telefone);
-
-
             cliente.IdEndereco = cliente.Endereco.Id = RepositorioCliente.InserirEndereco(_connectionString, cliente);
             cliente.Id = RepositorioCliente.InserirCliente(_connectionString, cliente);
             cliente.Telefone.Id = RepositorioCliente.InserirTelefone(_connectionString, cliente);   
