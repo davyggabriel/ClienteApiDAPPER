@@ -25,8 +25,8 @@ namespace ClienteApi2.Controllers
         {
             cliente.IdEndereco = cliente.Endereco.Id = RepositorioCliente.InserirEndereco(_connectionString, cliente);
             cliente.Id = RepositorioCliente.InserirCliente(_connectionString, cliente);
-            cliente.Telefone.Id = RepositorioCliente.InserirTelefone(_connectionString, cliente);   
-           
+            cliente.Telefone.Id = RepositorioCliente.InserirTelefone(_connectionString, cliente);
+
             return Created("", cliente);
         }
 
@@ -48,18 +48,18 @@ namespace ClienteApi2.Controllers
             return cliente.FirstOrDefault();
         }
 
-        [HttpPut("alteracao-cadastro/{id}")]
-        public void AlteracaoDeCadastro(int id, [FromBody] Cliente cliente)
+        [HttpPut("alteracao-endereco/{id}")]
+        public void AlteracaoDeCadastro(int id, [FromBody] Endereco endereco)
         {
             var parametros = new List<SqlParameter>() {
                 new SqlParameter("@id", id),
-                new SqlParameter("@rua",cliente.Endereco.Rua),
-                new SqlParameter("@numero",cliente.Endereco.Numero),
-                new SqlParameter("@complemento",cliente.Endereco.Complemento),
-                new SqlParameter("@bairo",cliente.Endereco.Bairro),
-                new SqlParameter("@cidade",cliente.Endereco.Cidade),
-                new SqlParameter("@estado",cliente.Endereco.Estado),
-                new SqlParameter("@pais",cliente.Endereco.Pais),
+                new SqlParameter("@rua",endereco.Rua),
+                new SqlParameter("@numero",endereco.Numero),
+                new SqlParameter("@complemento",endereco.Complemento),
+                new SqlParameter("@bairo",endereco.Bairro),
+                new SqlParameter("@cidade",endereco.Cidade),
+                new SqlParameter("@estado",endereco.Estado),
+                new SqlParameter("@pais",endereco.Pais),
             };
             var sql = @"update endereco set rua = @rua where id = @id
                     update endereco set numero = @numero where id = @id
@@ -69,23 +69,32 @@ namespace ClienteApi2.Controllers
                     update endereco set estado = @estado where id = @id
                     update endereco set pais = @pais where id = @id";
             RepositorioCliente.Executar(_connectionString, sql, parametros);
+        }
 
-            parametros = new List<SqlParameter>() {
+        [HttpPut("alteracao-cliente/{id}")]
+        public void AlteracaoCliente(int id, [FromBody] ClienteAlternativo cliente)
+        {
+            var parametros = new List<SqlParameter>() {
                 new SqlParameter("@id", id),
                 new SqlParameter("@cpf", cliente.Cpf),
                 new SqlParameter("@nome",cliente.Nome),
                 new SqlParameter("@filiacao",cliente.Filiacao),
             };
-            sql = @"update cliente set cpf = @cpf where id = @id
+            var sql = @"update cliente set cpf = @cpf where id = @id
                     update cliente set nome = @nome where id = @id
                     update cliente set filiacao = @filiacao where id = @id";
             RepositorioCliente.Executar(_connectionString, sql, parametros);
 
-            parametros = new List<SqlParameter>() {
+        }
+
+        [HttpPut("alteracao-telefone/{id}")]
+        public void AlteracaoTelefone(int id, [FromBody] Telefone telefone)
+        {
+            var parametros = new List<SqlParameter>() {
                 new SqlParameter("@id", id),
-                new SqlParameter("@numero",cliente.Telefone.Numero),
+                new SqlParameter("@numero",telefone.Numero),
             };
-            sql = @"update telefone set numero = @numero where id = @id";
+            var sql = @"update telefone set numero = @numero where id = @id";
             RepositorioCliente.Executar(_connectionString, sql, parametros);
         }
 
