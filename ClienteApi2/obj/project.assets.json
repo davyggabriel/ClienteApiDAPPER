@@ -973,11 +973,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\davygabriel_frwk\\source\\repos\\ClienteApi2\\ClienteApi2\\ClienteApi2.csproj",
+      "projectUniqueName": "C:\\Users\\davygabriel_frwk\\Source\\Repos\\davyggabriel\\ClienteApiDapper\\ClienteApi2\\ClienteApi2.csproj",
       "projectName": "ClienteApi2",
-      "projectPath": "C:\\Users\\davygabriel_frwk\\source\\repos\\ClienteApi2\\ClienteApi2\\ClienteApi2.csproj",
+      "projectPath": "C:\\Users\\davygabriel_frwk\\Source\\Repos\\davyggabriel\\ClienteApiDapper\\ClienteApi2\\ClienteApi2.csproj",
       "packagesPath": "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\davygabriel_frwk\\source\\repos\\ClienteApi2\\ClienteApi2\\obj\\",
+      "outputPath": "C:\\Users\\davygabriel_frwk\\Source\\Repos\\davyggabriel\\ClienteApiDapper\\ClienteApi2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

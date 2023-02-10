@@ -14,11 +14,9 @@ namespace ClienteApi2.Controllers
     public class ClienteController : ControllerBase
     {
         private readonly RepositorioClienteDapper _repository;
-        private string _connectionString;
         public ClienteController(IConfiguration configuration)
         { 
             _repository = new RepositorioClienteDapper(configuration);
-            _connectionString = configuration.GetSection("ConnectionStrings:ClienteApi").Value;
         }
 
         [HttpPost("cadastrar")]
