@@ -8,6 +8,9 @@
     ".NETCoreApp,Version=v6.0": {
       "ClienteApi2/1.0.0": {
         "dependencies": {
+          "Dapper.SqlBuilder": "2.0.78",
+          "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.Data.SqlClient": "4.8.5"
         },
@@ -15,7 +18,68 @@
           "ClienteApi2.dll": {}
         }
       },
+      "Dapper/2.0.78": {
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.78.45418"
+          }
+        }
+      },
+      "Dapper.SqlBuilder/2.0.78": {
+        "dependencies": {
+          "Dapper": "2.0.78"
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.SqlBuilder.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.78.45418"
+          }
+        }
+      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
+      "Microsoft.Extensions.Configuration/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Primitives": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/7.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.OpenApi/1.2.3": {
         "runtime": {
@@ -130,6 +194,7 @@
           }
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Security.AccessControl/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -145,12 +210,54 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Dapper/2.0.78": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vLPwL2HZXp/DN17Eu7sg6GMEj02alq7jcy6atn5Gv8i96b9Hu1UoxlCrhInUPfSFLQQiD8O7pdWAE1fdUEO/1Q==",
+      "path": "dapper/2.0.78",
+      "hashPath": "dapper.2.0.78.nupkg.sha512"
+    },
+    "Dapper.SqlBuilder/2.0.78": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-07LHm+/YOLyFieN51mjwrrVPKX3q0k7RxG+8zi/5MKjy7mWid/DRlRFNgvcCffEcjLjkbgEdITHkKTKSxSmPnw==",
+      "path": "dapper.sqlbuilder/2.0.78",
+      "hashPath": "dapper.sqlbuilder.2.0.78.nupkg.sha512"
+    },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
       "path": "microsoft.extensions.apidescription.server/3.0.0",
       "hashPath": "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tldQUBWt/xeH2K7/hMPPo5g8zuLc3Ro9I5d4o/XrxvxOCA2EZBtW7bCHHTc49fcBtvB8tLAb/Qsmfrq+2SJ4vA==",
+      "path": "microsoft.extensions.configuration/7.0.0",
+      "hashPath": "microsoft.extensions.configuration.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f34u2eaqIjNO9YLHBz8rozVZ+TcFiFs0F3r7nUJd7FRkVSxk8u4OpoK226mi49MwexHOR2ibP9MFvRUaLilcQQ==",
+      "path": "microsoft.extensions.configuration.abstractions/7.0.0",
+      "hashPath": "microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h3j/QfmFN4S0w4C2A6X7arXij/M/OVw3uQHSOFxnND4DyAzO1F9eMX7Eti7lU/OkSthEE0WzRsfT/Dmx86jzCw==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/7.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-um1KU5kxcRp3CNuI8o/GrZtD4AIOXDk+RLsytjZ9QPok3ttLUelLKpilVPuaFT3TFjOhSibUAso0odbOaCDj3Q==",
+      "path": "microsoft.extensions.primitives/7.0.0",
+      "hashPath": "microsoft.extensions.primitives.7.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
@@ -235,6 +342,13 @@
       "sha512": "sha512-fRqxut4lrndPHrXD+ht1XRmCL3obuKldm4XjCRYS9p5f7FSR7shBxAwTkDrpFMsHC9BhNgjjmUtiIjvehn5zkg==",
       "path": "system.data.sqlclient/4.8.5",
       "hashPath": "system.data.sqlclient.4.8.5.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
     "System.Security.AccessControl/4.7.0": {
       "type": "package",

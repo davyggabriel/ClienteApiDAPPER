@@ -16,6 +16,10 @@ namespace ClienteApi2.Models
             Estado = estado;
             Pais = pais;
         }
+        public Endereco()
+        {
+
+        }
 
         public int Id { get; set; }
 

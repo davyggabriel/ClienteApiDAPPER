@@ -13,19 +13,21 @@ namespace ClienteApi2.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
-        public static List<Cliente> clientes = new List<Cliente>();
+        private readonly RepositorioClienteDapper _repository;
         private string _connectionString;
         public ClienteController(IConfiguration configuration)
-        {
+        { 
+            _repository = new RepositorioClienteDapper(configuration);
             _connectionString = configuration.GetSection("ConnectionStrings:ClienteApi").Value;
         }
 
         [HttpPost("cadastrar")]
         public ActionResult<Cliente> Cadastrar([FromBody] Cliente cliente)
         {
-            cliente.IdEndereco = cliente.Endereco.Id = RepositorioCliente.InserirEndereco(_connectionString, cliente);
-            cliente.Id = RepositorioCliente.InserirCliente(_connectionString, cliente);
-            cliente.Telefone.Id = RepositorioCliente.InserirTelefone(_connectionString, cliente);
+            cliente.Endereco.Id = _repository.InserirEndereco(cliente.Endereco);
+            cliente.IdEndereco = cliente.Endereco.Id;
+            cliente.Id = _repository.InserirCliente(cliente);
+            cliente.Telefone.Id = _repository.InserirTelefone(cliente.Telefone,cliente.Id);
 
             return Created("", cliente);
         }
@@ -33,93 +35,45 @@ namespace ClienteApi2.Controllers
         [HttpGet("listar")]
         public IActionResult Listar()
         {
-            var cliente = RepositorioCliente.Selecionar(_connectionString, "select cliente.*, telefone.id idTelefone , telefone.numero numeroTelefone, telefone.idCliente, endereco.id enderecoId, endereco.rua, endereco.numero, endereco.bairo, endereco.complemento, endereco.cidade, endereco.estado, endereco.pais \r\nfrom cliente\r\njoin telefone\r\non cliente.id = telefone.idcliente\r\njoin endereco\r\non endereco.id = cliente.idendereco", null);
-            return Ok(cliente);
+            var clientes = _repository.ListarTodos();
+            return Ok(clientes);
         }
 
         [HttpGet("busca-por-cpf/{cpf}")]
         public ActionResult<Cliente> BuscaPorCpf(string cpf)
         {
-            var parametros = new List<SqlParameter>() {
-                new SqlParameter("@cpf", cpf)
-            };
-            var cliente = RepositorioCliente.Selecionar(_connectionString, "select cliente.*, telefone.id idTelefone , telefone.numero numeroTelefone, telefone.idCliente, endereco.id enderecoID, endereco.rua, endereco.numero, endereco.bairo, endereco.complemento, endereco.cidade, endereco.estado, endereco.pais \r\nfrom cliente\r\njoin telefone\r\non cliente.id = telefone.idcliente\r\njoin endereco\r\non endereco.id = cliente.idendereco where cpf = @cpf", parametros);
-
-            return cliente.FirstOrDefault();
+            return Ok(_repository.BuscarPorCpf(cpf));  
         }
 
         [HttpPut("alteracao-endereco/{id}")]
-        public void AlteracaoDeCadastro(int id, [FromBody] Endereco endereco)
+        public ActionResult AlteracaoEndereco(int id,[FromBody] Endereco endereco)
         {
-            var parametros = new List<SqlParameter>() {
-                new SqlParameter("@id", id),
-                new SqlParameter("@rua",endereco.Rua),
-                new SqlParameter("@numero",endereco.Numero),
-                new SqlParameter("@complemento",endereco.Complemento),
-                new SqlParameter("@bairo",endereco.Bairro),
-                new SqlParameter("@cidade",endereco.Cidade),
-                new SqlParameter("@estado",endereco.Estado),
-                new SqlParameter("@pais",endereco.Pais),
-            };
-            var sql = @"update endereco set rua = @rua where id = @id
-                    update endereco set numero = @numero where id = @id
-                    update endereco set complemento = @complemento where id = @id
-                    update endereco set bairo = @bairo where id = @id
-                    update endereco set cidade = @cidade where id = @id
-                    update endereco set estado = @estado where id = @id
-                    update endereco set pais = @pais where id = @id";
-            RepositorioCliente.Executar(_connectionString, sql, parametros);
+           _repository.AtualizaEndereco(id,endereco);
+            return Accepted();
         }
 
-        [HttpPut("alteracao-cliente/{id}")]
-        public void AlteracaoCliente(int id, [FromBody] ClienteAlternativo cliente)
+        [HttpPut("alteracao-cliente/{cpf}")]
+        public ActionResult AlteracaoCliente(string cpf,[FromBody] ClienteAlternativo cliente)
         {
-            var parametros = new List<SqlParameter>() {
-                new SqlParameter("@id", id),
-                new SqlParameter("@cpf", cliente.Cpf),
-                new SqlParameter("@nome",cliente.Nome),
-                new SqlParameter("@filiacao",cliente.Filiacao),
-            };
-            var sql = @"update cliente set cpf = @cpf where id = @id
-                    update cliente set nome = @nome where id = @id
-                    update cliente set filiacao = @filiacao where id = @id";
-            RepositorioCliente.Executar(_connectionString, sql, parametros);
-
+            _repository.AtualizaCliente(cpf,cliente);
+            return Accepted();
         }
 
         [HttpPut("alteracao-telefone/{id}")]
-        public void AlteracaoTelefone(int id, [FromBody] Telefone telefone)
+        public ActionResult AlteracaoTelefone(int id,[FromBody] Telefone telefone)
         {
-            var parametros = new List<SqlParameter>() {
-                new SqlParameter("@id", id),
-                new SqlParameter("@numero",telefone.Numero),
-            };
-            var sql = @"update telefone set numero = @numero where id = @id";
-            RepositorioCliente.Executar(_connectionString, sql, parametros);
+            _repository.AtualizaTelefone(id,telefone);
+            return Accepted();
         }
 
         [HttpDelete("deletar-cadastro/{cpf}")]
-        public void Deletar(string cpf)
+        public ActionResult Deletar(string cpf)
         {
-            var parametros = new List<SqlParameter>() {
-                new SqlParameter("@cpf", cpf)
-            };
-            var cliente = RepositorioCliente.Selecionar(_connectionString, "select cliente.*, telefone.id idTelefone , telefone.numero numeroTelefone, telefone.idCliente, endereco.id enderecoID, endereco.rua, endereco.numero, endereco.bairo, endereco.complemento, endereco.cidade, endereco.estado, endereco.pais \r\nfrom cliente\r\njoin telefone\r\non cliente.id = telefone.idcliente\r\njoin endereco\r\non endereco.id = cliente.idendereco where cpf = @cpf", parametros);
-            parametros = new List<SqlParameter>() {
-                new SqlParameter("@idTelefone", cliente.FirstOrDefault().Telefone.Id)
-            };
-            var sql = "delete from telefone where Id = @idTelefone";
-            RepositorioCliente.Executar(_connectionString, sql, parametros);
-            parametros = new List<SqlParameter>() {
-                new SqlParameter("@idCliente", cliente.FirstOrDefault().Id)
-            };
-            sql = "delete from cliente where Id = @idCliente";
-            RepositorioCliente.Executar(_connectionString, sql, parametros);
-            parametros = new List<SqlParameter>() {
-                new SqlParameter("@idEndereco",cliente.FirstOrDefault().Endereco.Id)
-            };
-            sql = "delete from endereco where Id = @idEndereco";
-            RepositorioCliente.Executar(_connectionString, sql, parametros);         
+            var cliente = _repository.BuscarPorCpf(cpf);
+            _repository.DeletarTelefone(cliente.Telefone);
+            _repository.DeletarCliente(cliente);
+            _repository.DeletarEndereco(cliente.Endereco);
+            return Accepted();
         }
     }
 }

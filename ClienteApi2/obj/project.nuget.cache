@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "PmHBGAY17ZnuXPtf9SD3sWuSqeMq6f1UJ25LI/IcCvah4r0Ayyg++sI7PAWve/Z114uYO7k6VwwlyPbpah1W/Q==",
+  "dgSpecHash": "ALzhmooDJOhtz1G5JkZ2zR3F/VnTydlJjpRM5ffPJTX2avchCsHcwUuTskOMEL6XYFSX+Yr84lntJXKyq/MOcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\davygabriel_frwk\\source\\repos\\ClienteApi2\\ClienteApi2\\ClienteApi2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\dapper.sqlbuilder\\2.0.78\\dapper.sqlbuilder.2.0.78.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
@@ -17,6 +23,7 @@
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
+    "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\davygabriel_frwk\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],

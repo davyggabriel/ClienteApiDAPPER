@@ -33,5 +33,10 @@ namespace ClienteApi2.Models
             Endereco = endereco;
             Telefone = telefone;
         }
+
+        public Cliente()
+        {
+
+        }
     }
 }

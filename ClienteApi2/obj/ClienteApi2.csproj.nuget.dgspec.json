@@ -45,6 +45,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Dapper.SqlBuilder": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
